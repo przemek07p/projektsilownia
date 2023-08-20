@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:projekt003.ViewModels" 
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms" 
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="projekt003.Pages.MealsPageTabContent">
+    <ContentView.BindingContext>
+        <vm:MealsPageViewModel/>
+    </ContentView.BindingContext>
+    
+
+            <ContentView.Content>                
+                <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                 Command="{Binding RefreshCommand}">
+            <ScrollView>
+                
+                <navigationdrawer:SfNavigationDrawer IsOpen="{Binding IsFlyoutMenuOpen}">
+            <navigationdrawer:SfNavigationDrawer.DrawerHeaderView >
+                <StackLayout BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2},Light={StaticResource CardBackground2}}">
+                    <Label BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}"/>
+                </StackLayout>
+            </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+            <navigationdrawer:SfNavigationDrawer.DrawerContentView>
+                <Grid BackgroundColor="{AppThemeBinding Dark= {StaticResource CardBackgroundDark2}, Light= {StaticResource CardBackground2}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.5*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="0.5*"/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}"/>
+                    <sfbuttons:SfButton  BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}" Clicked="SfButton_Clicked" Grid.Row="1">
+                        <sfbuttons:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <ffsvg:SvgCachedImage Grid.Column="0" Source="resource://projekt003.Icons.settings2.svg"/>
+                                <Label Grid.Column="1" Text="Ustawienia" FontAttributes="Bold" TextColor="#4ab8a1" VerticalOptions="Center" FontSize="Medium"/>
+                            </Grid>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                    <sfbuttons:SfButton BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2},  Light={StaticResource CardBackground2}}" Grid.Row="4" Clicked="SfButton_Clicked_1">
+                        <sfbuttons:SfButton.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.logout.svg"/>
+                                <Label Grid.Column="1" Text="Wyloguj mnie" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center" FontSize="Medium"></Label>
+                            </Grid>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                </Grid>
+            </navigationdrawer:SfNavigationDrawer.DrawerContentView>
+            <navigationdrawer:SfNavigationDrawer.ContentView>
+                
+                <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="7*"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" BackgroundColor='LightGray'>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                </Grid.ColumnDefinitions>
+                                <sfbuttons:SfButton Grid.Column="0" Command="{Binding FlyoutMenuButtonClickedCommand}" BackgroundColor="Transparent" Padding="30">
+                                    <sfbuttons:SfButton.Content>
+                                        <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.bars.svg" >
+                                            <ffsvg:SvgCachedImage.Transformations>
+                                                <transform:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="True"  />
+                                            </ffsvg:SvgCachedImage.Transformations>
+                                        </ffsvg:SvgCachedImage>
+                                    </sfbuttons:SfButton.Content>
+                                </sfbuttons:SfButton>
+                                <Label Grid.Column="1" Text="Twoje posiłki!" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </Grid>
+                            <ListView Grid.Row="1" x:Name="listOfComponents" RowHeight="120" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                                        <StackLayout Orientation="Horizontal" >
+
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}"
+                                                       FontAttributes="Bold"
+                                                       FontSize="Medium"
+                                TextColor="Brown"  />
+                                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding MealType}" FontAttributes="Bold"
+                                                       FontSize="Medium" 
+                                TextColor="Brown" />
+                                                <Label Grid.Row="1" Grid.Column="0" Text="Data:"/>
+                                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding DateTime, StringFormat='{0:dd.MM.yyyy}'}" 
+                                                   TextColor="#503026" />
+
+                                                <Label Grid.Row="1" Grid.Column="2" Text="               Kalorie:"/>
+                                                <Label Grid.Row="1" Grid.Column="3" Text="{Binding KCal}"  
+                                TextColor="#503026" />
+
+                                                <Label Grid.Row="2" Grid.Column="0" Text="Tłuszcz:"/>
+                                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding Tluszcz}"                                                    
+                                TextColor="#503026" />
+
+                                                <Label Grid.Row="2" Grid.Column="2" Text="               Białko:"/>
+                                                <Label Grid.Row="2" Grid.Column="3" Text="{Binding Bialko}" 
+                                                   
+                                TextColor="#503026" />
+
+                                                <Label Grid.Row="3" Grid.Column="0" Text="Węglowodany:"/>
+                                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding Weglowodany}" 
+                                                   
+                                TextColor="#503026" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <sfbuttons:SfButton Grid.Row="2"
+                        VerticalOptions="End" 
+                                    HeightRequest="100"                                                                                   
+                                    CornerRadius="100" Command="{Binding DodajSkladnikButtonCommand} "
+                                    BackgroundColor="Green">
+                        <sfbuttons:SfButton.Content>
+                            <Label Text="Dodaj składnik posiłku" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#fff"/>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                </Grid>
+            </navigationdrawer:SfNavigationDrawer.ContentView>
+        </navigationdrawer:SfNavigationDrawer>
+            </ScrollView>
+        </RefreshView>
+    </ContentView.Content>
+
+</ContentView>

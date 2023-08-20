@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:pages="clr-namespace:projekt003.Pages"
+             x:Class="projekt003.Pages.ZaskoczMnieTabContent">
+  <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding  Dark={StaticResource TitleLightDark}, Light={StaticResource CardBackground2}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <sfbuttons:SfButton Grid.Column="0" Command="{Binding FlyoutMenuButtonClickedCommand}" BackgroundColor="Transparent" Padding="30">
+                    <sfbuttons:SfButton.Content>
+                        <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.bars.svg" >
+                            <ffsvg:SvgCachedImage.Transformations>
+                                <transform:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="True"  />
+                            </ffsvg:SvgCachedImage.Transformations>
+                        </ffsvg:SvgCachedImage>
+                    </sfbuttons:SfButton.Content>
+                </sfbuttons:SfButton>
+                <Label Grid.Column="1" Text="Zaskocz mnie!" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <StackLayout Grid.Row="1">
+                <tabView:SfTabView TabHeight="100" VisibleHeaderCount="2" >
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.soup.svg"  Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Pomysł na" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Label Text="jedzenie" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </StackLayout>
+                            </Grid>
+                        </tabView:SfTabItem.HeaderContent>
+                        <tabView:SfTabItem.Content>
+                            <pages:LosujPosilekTabContent/>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.workout.svg"  Grid.Column="0"/>
+                                <StackLayout Grid.Column="1">
+                                    <Label Text="Pomysł na" FontAttributes="Bold"/>
+                                    <Label Text="trening" FontAttributes="Bold"/>
+                                </StackLayout>
+                            </Grid>
+                        </tabView:SfTabItem.HeaderContent>
+                        <tabView:SfTabItem.Content>
+                            <pages:LosujTreningTabContent/>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                </tabView:SfTabView>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

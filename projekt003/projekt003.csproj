@@ -1,0 +1,153 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\add.svg" />
+    <None Remove="Icons\backArrow.svg" />
+    <None Remove="Icons\bars.svg" />
+    <None Remove="Icons\close.svg" />
+    <None Remove="Icons\hantel.svg" />
+    <None Remove="Icons\dices.svg" />
+    <None Remove="Icons\logout.svg" />
+    <None Remove="Icons\meal.svg" />
+    <None Remove="Icons\moon.svg" />
+    <None Remove="Icons\progress.svg" />
+    <None Remove="Icons\save.svg" />
+    <None Remove="Icons\settings.svg" />
+    <None Remove="Icons\settings2.svg" />
+    <None Remove="Icons\soup.svg" />
+    <None Remove="Icons\sun.svg" />
+    <None Remove="Icons\surprise.svg" />
+    <None Remove="Icons\timer.svg" />
+    <None Remove="Icons\training.svg" />
+    <None Remove="Icons\usersettings.svg" />
+    <None Remove="Icons\workout.svg" />
+    <None Remove="Pictures\barki.png" />
+    <None Remove="Pictures\biceps.png" />
+    <None Remove="Pictures\cyc.png" />
+    <None Remove="Pictures\kaloryfer.png" />
+    <None Remove="Pictures\Logo.png" />
+    <None Remove="Pictures\lydki.png" />
+    <None Remove="Pictures\mealBg.png" />
+    <None Remove="Pictures\plecy.png" />
+    <None Remove="Pictures\posladki.png" />
+    <None Remove="Pictures\przedramie.png" />
+    <None Remove="Pictures\trainingBg.png" />
+    <None Remove="Pictures\triceps.png" />
+    <None Remove="Pictures\uda.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Icons\add.svg" />
+    <EmbeddedResource Include="Icons\backArrow.svg" />
+    <EmbeddedResource Include="Icons\bars.svg" />
+    <EmbeddedResource Include="Icons\close.svg" />
+    <EmbeddedResource Include="Icons\hantel.svg" />
+    <EmbeddedResource Include="Icons\dices.svg" />
+    <EmbeddedResource Include="Icons\logout.svg" />
+    <EmbeddedResource Include="Icons\meal.svg" />
+    <EmbeddedResource Include="Icons\moon.svg" />
+    <EmbeddedResource Include="Icons\progress.svg" />
+    <EmbeddedResource Include="Icons\save.svg" />
+    <EmbeddedResource Include="Icons\settings.svg" />
+    <EmbeddedResource Include="Icons\settings2.svg" />
+    <EmbeddedResource Include="Icons\soup.svg" />
+    <EmbeddedResource Include="Icons\sun.svg" />
+    <EmbeddedResource Include="Icons\surprise.svg" />
+    <EmbeddedResource Include="Icons\timer.svg" />
+    <EmbeddedResource Include="Icons\training.svg" />
+    <EmbeddedResource Include="Icons\usersettings.svg" />
+    <EmbeddedResource Include="Icons\workout.svg" />
+    <EmbeddedResource Include="Pictures\barki.png" />
+    <EmbeddedResource Include="Pictures\biceps.png" />
+    <EmbeddedResource Include="Pictures\cyc.png" />
+    <EmbeddedResource Include="Pictures\kaloryfer.png" />
+    <EmbeddedResource Include="Pictures\Logo.png" />
+    <EmbeddedResource Include="Pictures\lydki.png" />
+    <EmbeddedResource Include="Pictures\mealBg.png" />
+    <EmbeddedResource Include="Pictures\plecy.png" />
+    <EmbeddedResource Include="Pictures\posladki.png" />
+    <EmbeddedResource Include="Pictures\przedramie.png" />
+    <EmbeddedResource Include="Pictures\trainingBg.png" />
+    <EmbeddedResource Include="Pictures\triceps.png" />
+    <EmbeddedResource Include="Pictures\uda.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LiteDB" Version="5.0.11" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
+    <PackageReference Include="SkiaSharp" Version="2.80.3" />
+    <PackageReference Include="Syncfusion.Licensing" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="20.1.0.55" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.55" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\AddTrainingDayPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LosujPosilekTabContent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\LosujTreningTabContent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MealsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\MealsPageTabContent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\NewMealComponentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\RegistrationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Test.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+
+    <EmbeddedResource Update="Pages\TrainingPopupLayoutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\TrainingTabContent.xaml">
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\ZaskoczMnieTabContent.xaml">
+
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

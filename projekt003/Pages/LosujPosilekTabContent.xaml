@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:SfChip="clr-namespace:Syncfusion.Buttons.XForms.SfChip;assembly=Syncfusion.Buttons.XForms"
+             xmlns:SfButton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:vm="clr-namespace:projekt003.ViewModels"
+             xmlns:busy="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:SfList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:SfBorder="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             x:Class="projekt003.Pages.LosujPosilekTabContent">
+    <ContentView.BindingContext>
+        <vm:LosujPosilekTabViewModel/>
+    </ContentView.BindingContext>
+  <ContentView.Content>
+        <StackLayout>
+            <Frame Margin="15" HasShadow="True">
+                <StackLayout>
+            <Label Text="Wybierz ile kCal ma mieć posiłek : " HorizontalOptions="Center" Margin="10" FontAttributes="Bold" TextColor="DarkSlateGray"/>
+            <SfButton:SfChipGroup ItemsSource="{Binding CaloriesOptions}" 
+                                  Type="Choice" 
+                                 
+                                  ChipPadding="5"
+                                  SelectedItem="{Binding SelectedItem}"
+                                  SelectedChipBackgroundColor="DarkSlateGray">
+                <SfButton:SfChipGroup.ChipLayout>
+                    <FlexLayout 
+						HorizontalOptions="Start" 
+						VerticalOptions="Center" 
+						Direction="Row" 
+						Wrap="Wrap"
+						JustifyContent="Start"
+						AlignContent="Start" 
+						AlignItems="Start"/>
+                </SfButton:SfChipGroup.ChipLayout>
+            </SfButton:SfChipGroup>
+                </StackLayout>
+            </Frame>
+            <SfBorder:SfBorder HeightRequest="60"
+                               HorizontalOptions="Center"
+                               WidthRequest="60"
+                               HasShadow="True"
+                               BorderColor="White"
+                               CornerRadius="40" 
+                               BorderThickness="3">
+                <SfButton:SfButton CornerRadius="45" 
+                               HorizontalOptions="Center" PressedBackgroundColor="LightGray"
+                               Command="{Binding GetButtonClickedCommand}"
+                               BackgroundColor="Transparent">
+                    <SfButton:SfButton.Content>
+                        <busy:SfBusyIndicator TextColor="Black" BackgroundColor="white" AnimationType="HorizontalPulsingBox" EnableAnimation="{Binding IsAnimationRunning}"/>
+                    </SfButton:SfButton.Content>
+                </SfButton:SfButton>
+            </SfBorder:SfBorder>
+            <Frame Margin="15">
+                <ScrollView>
+                <StackLayout>
+                    
+            <Grid Margin="10,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                                <Label Text="Nazwa: " HorizontalTextAlignment="Center" CharacterSpacing="2"/>
+                                <Label Text="{Binding Meal.strMeal}" HorizontalTextAlignment="Center" CharacterSpacing="2"/>
+                </StackLayout>
+                <StackLayout Grid.Column="1">
+                    <Label Text="Typ: " HorizontalTextAlignment="Center" CharacterSpacing="2"/>
+                                <Label Text="{Binding Meal.strCategory}" HorizontalTextAlignment="Center" CharacterSpacing="2"/>
+                </StackLayout>
+            </Grid>
+                        <Label Text="Składnik: " CharacterSpacing="2"/>
+                        <SfList:SfListView ItemsSource="{Binding Ingredients}" Margin="20,10,10,0" SelectionMode="None" AutoFitMode="DynamicHeight" IsScrollingEnabled="False">
+                <SfList:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="‡    "/>
+                                    <Span Text="{Binding Key}" CharacterSpacing="2"/>
+                                    <Span Text=" : "/>
+                                    <Span Text="{Binding Value}" CharacterSpacing="2"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </DataTemplate>
+                </SfList:SfListView.ItemTemplate>
+            </SfList:SfListView>
+                </StackLayout>
+                </ScrollView>
+            </Frame>
+            
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>
+    
+    
+    
+    

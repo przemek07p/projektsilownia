@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:sfList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+             xmlns:viewmodels="clr-namespace:projekt003.ViewModels" 
+             x:DataType="viewmodels:NewMealComponentPageViewModel"
+             xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" 
+             xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             x:Class="projekt003.Pages.NewMealComponentPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2}, Light={StaticResource WindowBackgroundColor}}">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Padding="30" 
+             BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2}, Light={StaticResource WindowBackgroundColor}}">
+                    <StackLayout Margin="20">
+                        <Picker Title="Wybierz posiłek" ItemsSource="{Binding NazwaPosilkuValue}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" />
+                    </StackLayout>
+                </StackLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="1"  
+                                               Margin="50,20,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Nazwa" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="#00B0B6"
+                                               ErrorColor="#F14B4B">
+                    <Entry Text="{Binding NazwaSkladnikaValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="2"  
+                                               Margin="50,20,50,0"                                                
+                                               EnableFloating="True" 
+                                               Hint="Kaloryczność" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="#00B0B6"
+                                               ErrorColor="#F14B4B">
+                    <numerictextbox:SfNumericTextBox  AllowNull = "false" AllowDefaultDecimalDigits="False" Value="{Binding KalorycznoscSkladnikaValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="3"  
+                                               Margin="50,20,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Węglowodany" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="#00B0B6"
+                                               ErrorColor="#F14B4B">
+                    <numerictextbox:SfNumericTextBox  AllowNull = "false" AllowDefaultDecimalDigits="False" Value="{Binding WeglowodanyValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="4"  
+                                               Margin="50,20,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Białko" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="#00B0B6"
+                                               ErrorColor="#F14B4B">
+                    <numerictextbox:SfNumericTextBox  AllowNull = "false" AllowDefaultDecimalDigits="False" Value="{Binding BialkoValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="5"  
+                                               Margin="50,20,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Tłuszcz" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="#00B0B6"
+                                               ErrorColor="#F14B4B">
+                    <numerictextbox:SfNumericTextBox  AllowNull = "false" AllowDefaultDecimalDigits="False" Value="{Binding TluszczValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <StackLayout Grid.Row="6">
+                    <sfbuttons:SfButton VerticalOptions="End" 
+                                    HeightRequest="100"                                                                                   
+                                    CornerRadius="100" Command="{Binding ZapiszSkladnikButtonCommand}"
+                                    BackgroundColor="Green">
+                        <sfbuttons:SfButton.Content>
+                            <Label Text="Zapisz" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#fff"/>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

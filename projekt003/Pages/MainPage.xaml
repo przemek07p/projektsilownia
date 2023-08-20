@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="projekt003.MainPage"
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:navigationdrawer="clr-namespace:Syncfusion.SfNavigationDrawer.XForms;assembly=Syncfusion.SfNavigationDrawer.XForms"
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:sfList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             xmlns:chips="clr-namespace:Syncfusion.Buttons.XForms.SfChip;assembly=Syncfusion.Buttons.XForms"
+             xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:pages="clr-namespace:projekt003.Pages"
+             xmlns:gradient ="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+             BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2}, Light={StaticResource WindowBackgroundColor}}">
+    <navigationdrawer:SfNavigationDrawer IsOpen="{Binding IsFlyoutMenuOpen}">
+        <navigationdrawer:SfNavigationDrawer.DrawerHeaderView >
+            <StackLayout BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2},Light={StaticResource CardBackground2}}">
+                <Label BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}"/>
+            </StackLayout>
+        </navigationdrawer:SfNavigationDrawer.DrawerHeaderView>
+        <navigationdrawer:SfNavigationDrawer.DrawerContentView>
+            <Grid BackgroundColor="{AppThemeBinding Dark= {StaticResource CardBackgroundDark2}, Light= {StaticResource CardBackground2}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}"/>
+                <sfbuttons:SfButton  BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2}, Light={StaticResource CardBackground2}}" Clicked="SfButton_Clicked" Grid.Row="1">
+                    <sfbuttons:SfButton.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <ffsvg:SvgCachedImage Grid.Column="0" Source="resource://projekt003.Icons.settings2.svg"/>
+                            <Label Grid.Column="1" Text="Ustawienia" FontAttributes="Bold" TextColor="#4ab8a1" VerticalOptions="Center" FontSize="Medium"/>
+                        </Grid>
+                    </sfbuttons:SfButton.Content>
+                </sfbuttons:SfButton>
+                <sfbuttons:SfButton BackgroundColor="{AppThemeBinding  Dark={StaticResource CardBackgroundDark2},  Light={StaticResource CardBackground2}}" Grid.Row="4" Clicked="SfButton_Clicked_1">
+                    <sfbuttons:SfButton.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.logout.svg"/>
+                            <Label Grid.Column="1" Text="Wyloguj mnie" FontAttributes="Bold" TextColor="Black" VerticalOptions="Center" FontSize="Medium"></Label>
+                        </Grid>
+                    </sfbuttons:SfButton.Content>
+                </sfbuttons:SfButton>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.DrawerContentView>
+        <navigationdrawer:SfNavigationDrawer.ContentView>
+            <Grid>
+                <tabView:SfTabView TabHeaderPosition="Bottom" TabHeaderBackgroundColor="{AppThemeBinding Dark= {StaticResource CardBackgroundDark2},Light= {StaticResource CardBackground2}}">
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="1" Text="Aktywność" HorizontalTextAlignment="Center"/>
+                                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.timer.svg"/>
+                            </Grid>
+                        </tabView:SfTabItem.HeaderContent>
+                        <tabView:SfTabItem.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="7*"/>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0"     BackgroundColor="{AppThemeBinding  Dark={StaticResource TitleLightDark}, Light={StaticResource WindowBackgroundColor}}">
+                                </Grid>
+                                <sfList:SfListView Grid.Row="1" ItemsSource="{Binding ToDoListItems}" SelectionBackgroundColor="Transparent" AutoFitMode="DynamicHeight">
+                                    <sfList:SfListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="20" HeightRequest="150" WidthRequest="400">
+                                                <Grid IsVisible="{Binding IsTraining}">
+                                                    <ffsvg:SvgCachedImage HorizontalOptions="FillAndExpand"
+                                                                      Source="resource://projekt003.Pictures.trainingBg.png"/>
+                                                    <FlexLayout Margin="40,80,0,40">
+                                                        <Label Text="{Binding Title}" TextColor="Black" BackgroundColor="#A0FFFFFF" 
+                                                           FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Start"/>
+                                                        <Label Text="{Binding TrainingDuration}" TextColor="Black" BackgroundColor="#A0FFFFFF" 
+                                                           FontSize="Medium" FontAttributes="Bold" Margin="20, 0,0,0" HorizontalOptions="Start"/>
+                                                    </FlexLayout>
+                                                </Grid>
+                                                <Grid IsVisible="{Binding IsMeal}">
+                                                    <ffsvg:SvgCachedImage HorizontalOptions="FillAndExpand" Source="resource://projekt003.Pictures.mealBg.png"/>
+                                                    <FlexLayout Margin="40,80,0,40">
+                                                        <Label Text="{Binding MealType}" TextColor="Black" BackgroundColor="#A0FFFFFF" 
+                                                           FontSize="Large" FontAttributes="Bold"  HorizontalOptions="Start"/>
+                                                        <Label TextColor="Black" BackgroundColor="#A0FFFFFF" 
+                                                           FontSize="Medium" Margin="20, 0,0,0" HorizontalOptions="Start">
+                                                            <Label.FormattedText>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding Calories}"/>
+                                                                    <Span Text="  "/>
+                                                                    <Span Text=" kcal"/>
+                                                                </FormattedString>
+                                                            </Label.FormattedText>
+                                                        </Label>
+                                                    </FlexLayout>
+                                                </Grid>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </sfList:SfListView.ItemTemplate>
+                                </sfList:SfListView>
+                            </Grid>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+
+
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="1" Text="Posiłki" HorizontalTextAlignment="Center"/>
+                                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.meal.svg"/>
+                            </Grid>
+                            
+                        </tabView:SfTabItem.HeaderContent>    
+                        
+                            <tabView:SfTabItem.Content>
+                                <pages:MealsPageTabContent/>
+                                
+                            </tabView:SfTabItem.Content>
+                        
+                        </tabView:SfTabItem>
+                    
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="1" Text="Trening" HorizontalTextAlignment="Center"/>
+                                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.training.svg"/>
+                            </Grid>
+                        </tabView:SfTabItem.HeaderContent>
+                        <tabView:SfTabItem.Content>
+                            <pages:TrainingTabContent/>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                    <tabView:SfTabItem>
+                        <tabView:SfTabItem.HeaderContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Label Grid.Row="1" Text="Surprise" HorizontalTextAlignment="Center"/>
+                                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Icons.surprise.svg"/>
+                            </Grid>
+                        </tabView:SfTabItem.HeaderContent>
+                        <tabView:SfTabItem.Content>
+                            <pages:ZaskoczMnieTabContent/>
+                        </tabView:SfTabItem.Content>
+                    </tabView:SfTabItem>
+                </tabView:SfTabView>
+            </Grid>
+        </navigationdrawer:SfNavigationDrawer.ContentView>
+    </navigationdrawer:SfNavigationDrawer>
+</ContentPage>
+    

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="projekt003.Pages.RegistrationPage"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfbutton="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{AppThemeBinding Dark={StaticResource CardBackgroundDark2}, Light={StaticResource WindowBackgroundColor}}">
+                <inputLayout:SfTextInputLayout Grid.Row="2"  
+                                               ContainerBackgroundColor="{AppThemeBinding Dark={StaticResource CardBackground2}}"
+                                               Margin="50,100,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Login" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="{AppThemeBinding Dark={StaticResource CardBackground2}, Light= {StaticResource FocuseColorLogin }}"
+                                               ErrorColor="#F14B4B">
+                <Entry Text="{Binding LoginValue, Mode=OneWayToSource}"/>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout Grid.Row="2"  
+                                               ContainerBackgroundColor="{AppThemeBinding Dark={StaticResource CardBackground2}}"
+                                               Margin="50,10,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Hasło" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="{AppThemeBinding Dark={StaticResource CardBackground2}, Light= {StaticResource FocuseColorLogin }}"
+                                               ErrorColor="#F14B4B">
+                <Entry Text="{Binding PasswordValue, Mode=OneWayToSource}"/>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout Grid.Row="2"  
+                                               ContainerBackgroundColor="{AppThemeBinding Dark={StaticResource CardBackground2}}"
+                                               Margin="50,10,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Powtórz Hasło" 
+                                               ContainerType="Outlined"
+                                               FocusedColor="{AppThemeBinding Dark={StaticResource CardBackground2}, Light= {StaticResource FocuseColorLogin }}"
+                                               ErrorColor="#F14B4B">
+                <Entry Text="{Binding RepeatedPasswordValue, Mode=OneWayToSource}"/>
+            </inputLayout:SfTextInputLayout>
+            <sfbutton:SfButton  Margin="115,10,115,40"
+                                    CornerRadius="25" Command="{Binding ZarejestrujButtonCommand}"
+                                BorderWidth="15" BorderThickness="2" BorderColor="DarkGray" BackgroundColor="#898484">
+                <sfbutton:SfButton.Content>
+                    <Label FontSize="Title" Text="Zarejestruj" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#fff"/>
+                </sfbutton:SfButton.Content>
+            </sfbutton:SfButton>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

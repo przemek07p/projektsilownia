@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="projekt003.Pages.LoginPage"
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#fff">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <ffsvg:SvgCachedImage Grid.Row="0" Source="resource://projekt003.Pictures.Logo.png" Margin="0, 10,0,0"/>
+                <inputLayout:SfTextInputLayout Grid.Row="1"  
+                                               EnableFloating="True" 
+                                               FocusedColor="{AppThemeBinding Dark={StaticResource CardBackground2}, Light= {StaticResource FocuseColorLogin }}"
+                                               Hint="Login" 
+                                               Margin="50,0,50,0" 
+                                               ContainerType="Outlined"
+                                               ErrorColor="#F14B4B">
+                    <Entry Text="{Binding LoginValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Grid.Row="2"
+                                               Margin="50,0,50,0" 
+                                               EnableFloating="True" 
+                                               Hint="Hasło" EnablePasswordVisibilityToggle="True"
+                                               ContainerType="Outlined"
+                                               FocusedColor="{AppThemeBinding Dark={StaticResource CardBackground2}, Light= {StaticResource FocuseColorLogin }}"
+                                               ErrorColor="#F14B4B">
+                    <Entry Text="{Binding PasswordValue, Mode=OneWayToSource}"/>
+                </inputLayout:SfTextInputLayout>
+                <StackLayout Grid.Row="3">
+                    <sfbuttons:SfButton Margin="110,0,110,0"  BorderWidth="15" BorderThickness="2" BorderColor="DarkGray"
+                                    CornerRadius="25" Command="{Binding ZalogujButtonCommand}"
+                                    BackgroundColor="#898484">
+                        <sfbuttons:SfButton.Content>
+                            <Label FontSize="Title" Text="Zaloguj" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#fff"/>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                    <sfbuttons:SfButton  Margin="110,0,110,10" BorderWidth="15" BorderThickness="2" BorderColor="DarkGray"
+                                    CornerRadius="25" Command="{Binding ZarejestrujButtonCommand}"
+                                    BackgroundColor="#898484">
+                        <sfbuttons:SfButton.Content>
+                            <Label FontSize="Title" Text="Zarejestruj" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#fff"/>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

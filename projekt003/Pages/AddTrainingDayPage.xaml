@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="projekt003.Pages.AddTrainingDayPage"
+             xmlns:sfPopup="clr-namespace:Syncfusion.XForms.PopupLayout;assembly=Syncfusion.SfPopupLayout.XForms" 
+             xmlns:numerictextbox="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+             xmlns:timepicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             >
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding  Dark={StaticResource TitleLightDark}, Light={StaticResource CardBackground2}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <sfbuttons:SfButton Grid.Row="0" Grid.Column="0" BackgroundColor="Transparent" Margin="20,20,20,20" Command="{Binding BackArrowClickCommand}">
+                    <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.backArrow.svg" >
+                        <ffsvg:SvgCachedImage.Transformations>
+                            <transform:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="True" />
+                        </ffsvg:SvgCachedImage.Transformations>
+                    </ffsvg:SvgCachedImage>
+                </sfbuttons:SfButton>
+                <Label Grid.Column="1" Text="Zaplanuj dzień treningowy!" FontAttributes="Bold" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <StackLayout Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <sfbuttons:SfButton 
+                                    Grid.Column="0"
+                                    Margin="0,0,30,0"
+                                    HeightRequest="70"
+                                    BackgroundColor="Transparent" 
+                                    Command="{Binding AddExcercisedButtonClickCommand}"
+                                    >
+                        <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.add.svg"/>
+                    </sfbuttons:SfButton>
+                </Grid>
+                <Frame  IsVisible="{Binding IsPopupOpen}"
+                        HeightRequest="500">
+                    <ScrollView>
+                    <StackLayout>
+                        <Label Text="Nazwa ćwiczenia" FontSize="15"/>
+                            <inputLayout:SfTextInputLayout
+                                ContainerType="None"
+                                FocusedColor="#696969"
+                                >
+                                <Entry Text="{Binding NameOfMuscleEntryValue, Mode=TwoWay}"/>
+                            </inputLayout:SfTextInputLayout>
+                        <Label Text="Liczba serii" FontSize="15"/>
+                            <numerictextbox:SfNumericTextBox  AllowNull = "true" AllowDefaultDecimalDigits="False" BorderColor="#696969" Value="{Binding SeriesCounterNumericValue, Mode=TwoWay}"/>
+                        <Label Text="Liczba powtórzeń w serii"  FontSize="15"/>
+                            <numerictextbox:SfNumericTextBox  AllowNull = "true" AllowDefaultDecimalDigits="False" BorderColor="#696969" Value="{Binding RepeatCounterNumericValue, Mode=TwoWay}"/>
+                        <Label Text="Partie mięśni"  FontSize="15"/>
+
+                            <sfbuttons:SfChipGroup ItemsSource="{Binding MusclesList}" 
+                                                   ChipBackgroundColor="Transparent" 
+                                                   SelectedChipBackgroundColor="LightGoldenrodYellow" 
+                                                   Type="Choice" ChoiceMode="Single"
+                                                   SelectedItem="{Binding SelectedChipMuscle, Mode=TwoWay}">
+                                <sfbuttons:SfChipGroup.ChipLayout>
+                                    <FlexLayout Wrap="Wrap" HeightRequest="150"/>
+                                </sfbuttons:SfChipGroup.ChipLayout>
+                                <sfbuttons:SfChipGroup.ItemTemplate>
+                                    
+                                    <DataTemplate>
+                                        
+                                        <border:SfBorder CornerRadius="50" BorderColor="Transparent">
+                                            <ffsvg:SvgCachedImage Source="{Binding}"/>
+                                        </border:SfBorder>
+
+                                    </DataTemplate>
+                                </sfbuttons:SfChipGroup.ItemTemplate>
+                            </sfbuttons:SfChipGroup>
+                        <timepicker:SfTimePicker x:Name="timePicker"
+                                Format="H_mm"
+                                HeaderText="Czas treningu"
+                                HeaderBackgroundColor="#696969"
+                                HourHeaderText="Godziny"
+                                MinutesHeaderText="Minuty"
+                                SecondsHeaderText="Sekundy"
+                                Time="{Binding TrainingTimePicker, Mode=TwoWay}"
+                                />
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+                
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <sfbuttons:SfButton Grid.Column="0" Margin="10,0,10,0"  
+                                        BackgroundColor="#64a867" 
+                                        CornerRadius="20"
+                                        IsVisible="{Binding IsPopupOpen}"
+                                        Command="{Binding SaveButtonClickCommand}"
+                                        >
+                        <sfbuttons:SfButton.Content>
+                            <FlexLayout>
+                                <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.save.svg"/>
+                                <Label Text="Zapisz" 
+                                       VerticalTextAlignment="Center" 
+                                       TextColor="White"
+                                       Margin="20,0,0,0"
+                                       FontSize="20"></Label>
+                            </FlexLayout>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                    <sfbuttons:SfButton Grid.Column="1" Margin="10,0,10,0"  
+                                        BackgroundColor="#f56d4e" 
+                                        CornerRadius="20"
+                                        IsVisible="{Binding IsPopupOpen}"
+                                        Command="{Binding BackArrowClickCommand}"
+                                        >
+                        <sfbuttons:SfButton.Content>
+                            <FlexLayout>
+                                <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.close.svg"/>
+                                <Label Text="Cofnij" 
+                                       VerticalTextAlignment="Center" 
+                                       TextColor="White"
+                                       Margin="20,0,0,0"
+                                       FontSize="20"></Label>
+                            </FlexLayout>
+                        </sfbuttons:SfButton.Content>
+                    </sfbuttons:SfButton>
+                </Grid>
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

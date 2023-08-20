@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:sfbuttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:ffsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+             xmlns:transform="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:sfList="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
+             xmlns:tabView="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             x:Class="projekt003.Pages.TrainingTabContent"
+             xmlns:sfbusy="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms">
+  <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" BackgroundColor="{AppThemeBinding  Dark={StaticResource TitleLightDark}, Light={StaticResource CardBackground2}}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <sfbuttons:SfButton Grid.Column="0" Command="{Binding FlyoutMenuButtonClickedCommand}" BackgroundColor="Transparent" Padding="30">
+                    <sfbuttons:SfButton.Content>
+                        <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.bars.svg" >
+                            <ffsvg:SvgCachedImage.Transformations>
+                                <transform:TintTransformation HexColor="#FFFFFFFF" EnableSolidColor="True" />
+                            </ffsvg:SvgCachedImage.Transformations>
+                        </ffsvg:SvgCachedImage>
+                    </sfbuttons:SfButton.Content>
+                </sfbuttons:SfButton>
+                <Label Grid.Column="1" Text="Twój Trening!" FontAttributes="Bold" FontSize="Header" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Grid>
+            <tabView:SfTabView TabHeight="100" VisibleHeaderCount="2" Grid.Row="1">
+                <tabView:SfTabItem>
+                    <tabView:SfTabItem.HeaderContent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.hantel.svg" Margin="20,0,0,0" Grid.Column="0"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Dodaj" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0"/>
+                                <Label Text="trening" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Grid>
+                    </tabView:SfTabItem.HeaderContent>
+                    <tabView:SfTabItem.Content>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="3*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0">
+                                <sfbuttons:SfButton BackgroundColor="Transparent" Command="{Binding AddTrainingClickCommand}">
+                                    <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.add.svg"/>
+                                </sfbuttons:SfButton>
+                            </Grid>
+                        </Grid>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                <tabView:SfTabItem>
+                    <tabView:SfTabItem.HeaderContent>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <ffsvg:SvgCachedImage Source="resource://projekt003.Icons.progress.svg" Margin="20,0,0,0" Grid.Column="0"/>
+                            <StackLayout Grid.Column="1">
+                                <Label Text="Zobacz" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,20,0,0"/>
+                                <Label Text="postępy" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            </StackLayout>
+                        </Grid>
+                    </tabView:SfTabItem.HeaderContent>
+                    <tabView:SfTabItem.Content>
+                        <Frame Margin="15">
+                            <sfbusy:SfBusyIndicator IsBusy="True" IsVisible="true" TextColor="Black" AnimationType="Cupertino">
+                                
+                            </sfbusy:SfBusyIndicator>
+                        </Frame>
+                    </tabView:SfTabItem.Content>
+                </tabView:SfTabItem>
+                
+            </tabView:SfTabView>
+            <!--<StackLayout Grid.Row="1">
+
+                <sfList:SfListView ItemsSource="{Binding imageList}" 
+                                                   SelectionBackgroundColor="Transparent" 
+                                                   AutoFitMode="DynamicHeight"
+                                                   Orientation="Horizontal" >
+                    <sfList:SfListView.LayoutManager>
+                        <sfList:GridLayout SpanCount="5" />
+
+
+                    </sfList:SfListView.LayoutManager>
+                    <sfList:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="40,20,40,20">
+                                <Label Text="BBB"></Label>
+                                <ffsvg:SvgCachedImage Source="{Binding}" />
+                            </Grid>
+                        </DataTemplate>
+                    </sfList:SfListView.ItemTemplate>
+                </sfList:SfListView>
+
+
+            </StackLayout>-->
+        </Grid>
+    </ContentView.Content>
+</ContentView>
